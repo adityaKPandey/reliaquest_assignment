@@ -1,0 +1,26 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "id": "1",
+      "employee_name": "Tiger Nixon",
+      "employee_salary": "320800",
+      "employee_age": "61",
+      "profile_image": ""
+    },
+    {
+      "id": "2",
+      "employee_name": "Richard Gawkins",
+      "employee_salary": "45600",
+      "employee_age": "42",
+      "profile_image": ""
+    },
+    {
+      "id": "3",
+      "employee_name": "Sandra Doe",
+      "employee_salary": "275500",
+      "employee_age": "28",
+      "profile_image": ""
+    }
+  ]
+}

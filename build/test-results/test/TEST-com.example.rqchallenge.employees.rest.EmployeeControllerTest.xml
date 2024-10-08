@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.rqchallenge.employees.rest.EmployeeControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-10-08T19:45:55" hostname="ADITYA-S-PERSON" time="0.186">
+  <properties/>
+  <testcase name="testGetAllEmployees()" classname="com.example.rqchallenge.employees.rest.EmployeeControllerTest" time="0.186"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
