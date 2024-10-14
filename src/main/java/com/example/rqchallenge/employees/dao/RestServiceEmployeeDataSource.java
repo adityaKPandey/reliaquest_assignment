@@ -9,6 +9,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
@@ -26,12 +28,13 @@ public class RestServiceEmployeeDataSource implements EmployeeDataSource{
   @Autowired
   private ObjectMapper objectMapper;
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(RestServiceEmployeeDataSource.class);
+
 
   public List<Employee> fetchEmployees() throws DataNotFoundException {
-    //https://dummy.restapiexample.com/api/v1/employees
+    String employeeEndPoint = Constants.EMPLOYEES_URL;
     try {
-      ResponseEntity<APIResponse> employeeResponse = employeeRestTemplate.exchange(
-          Constants.EMPLOYEES_URL,
+      ResponseEntity<APIResponse> employeeResponse = employeeRestTemplate.exchange(employeeEndPoint,
           HttpMethod.GET,
           null,
           new ParameterizedTypeReference<APIResponse>() {
@@ -42,8 +45,8 @@ public class RestServiceEmployeeDataSource implements EmployeeDataSource{
          return response.getData();
       }
     }catch(ResourceAccessException e){
-      e.printStackTrace();
-       throw new DataNotFoundException(ErrorMessages.ERROR_MESSAGE_EMPLOYEE_REST_SERVICE);
+      LOGGER.error("Error occurred in fetching employees from endpoint {} : ", employeeEndPoint, e);
+      throw new DataNotFoundException(ErrorMessages.ERROR_MESSAGE_EMPLOYEE_REST_SERVICE);
     }
     return new ArrayList<>();
   }
